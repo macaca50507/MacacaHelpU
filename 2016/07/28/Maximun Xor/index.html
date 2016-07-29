@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Little Girl and Maximum XOR | MacacaHelpU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="題目注意 :如果不是寫成 1ll 那會炸開，因為 integer 只有 32 位左移的時候會爆開所以要轉成 long long  寫成 1ll
+重要的觀察是只要找到第一位不一樣的位元 因為數字在位元的狀況下會產生循環的情況 所以我們可以把之後所有的位元都弄成 0 xor 1所以答案是 1ll &amp;lt;&amp;lt; (i + 1) - 1;
+AC CODE:12345678910111213141516">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Little Girl and Maximum XOR">
+<meta property="og:url" content="https://github.com/macaca50507/2016/07/28/Maximun Xor/index.html">
+<meta property="og:site_name" content="MacacaHelpU">
+<meta property="og:description" content="題目注意 :如果不是寫成 1ll 那會炸開，因為 integer 只有 32 位左移的時候會爆開所以要轉成 long long  寫成 1ll
+重要的觀察是只要找到第一位不一樣的位元 因為數字在位元的狀況下會產生循環的情況 所以我們可以把之後所有的位元都弄成 0 xor 1所以答案是 1ll &amp;lt;&amp;lt; (i + 1) - 1;
+AC CODE:12345678910111213141516">
+<meta property="og:updated_time" content="2016-07-28T14:16:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Little Girl and Maximum XOR">
+<meta name="twitter:description" content="題目注意 :如果不是寫成 1ll 那會炸開，因為 integer 只有 32 位左移的時候會爆開所以要轉成 long long  寫成 1ll
+重要的觀察是只要找到第一位不一樣的位元 因為數字在位元的狀況下會產生循環的情況 所以我們可以把之後所有的位元都弄成 0 xor 1所以答案是 1ll &amp;lt;&amp;lt; (i + 1) - 1;
+AC CODE:12345678910111213141516">
+  
+    <link rel="alternate" href="/atom.xml" title="MacacaHelpU" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/MacacaHelpU/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/MacacaHelpU/" id="logo">MacacaHelpU</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/MacacaHelpU/">Home</a>
+        
+          <a class="main-nav-link" href="/MacacaHelpU/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/macaca50507"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Maximun Xor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2016/07/28/Maximun Xor/" class="article-date">
+  <time datetime="2016-07-27T23:12:28.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Little Girl and Maximum XOR
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a><a href="http://codeforces.com/problemset/problem/276/C" target="_blank" rel="external">題目</a></h2><p><code>注意 :</code><br>如果不是寫成 <code>1ll</code> 那會炸開，因為 <code>integer 只有 32 位</code>左移的時候會爆開<br>所以要轉成 <code>long long</code>  寫成 <code>1ll</code></p>
+<p>重要的觀察是只要找到第一位不一樣的位元 因為數字在位元的狀況下<br>會產生循環的情況 所以我們可以把之後所有的位元都弄成 0 xor 1<br>所以答案是 <code>1ll &lt;&lt; (i + 1) - 1;</code></p>
+<h2 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC CODE:"></a>AC CODE:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ll l,r;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(l == r)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"0"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> i ;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i = <span class="number">63</span>;;i--)&#123;</div><div class="line">        <span class="keyword">if</span>(((l&gt;&gt;i)&amp;<span class="number">1</span>) != ((r&gt;&gt;i)&amp;<span class="number">1</span>))&#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ans = (<span class="number">1l</span>l&lt;&lt;(i+<span class="number">1</span>)) - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/28/Maximun Xor/" data-id="cir7zewee0001lqrqxi1cq0lf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/Bit-compute/">Bit compute</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/MacacaHelpU/2016/07/28/Little Girl and Maximum XOR/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/MacacaHelpU/2016/07/27/failfunction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Failfunction</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Bit-compute/">Bit compute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/KMP/">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/MacacaHelpU/tags/Bit-compute/" style="font-size: 10px;">Bit compute</a> <a href="/MacacaHelpU/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/MacacaHelpU/tags/binary-search/" style="font-size: 10px;">binary search</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/MacacaHelpU/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/28/Little Girl and Maximum XOR/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/28/Maximun Xor/">Little Girl and Maximum XOR</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/27/failfunction/">Failfunction</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/26/Rating Shuffle/">Rating Shuffle</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Macaca Joe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/MacacaHelpU/" class="mobile-nav-link">Home</a>
+  
+    <a href="/MacacaHelpU/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/MacacaHelpU/fancybox/jquery.fancybox.css">
+  <script src="/MacacaHelpU/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/MacacaHelpU/js/script.js"></script>
+
+  </div>
+</body>
+</html>

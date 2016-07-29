@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MacacaHelpU</title>
+  <title>Rating Shuffle | MacacaHelpU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MacacaHelpU">
-<meta property="og:url" content="https://github.com/macaca50507/index.html">
+  <meta name="description" content="題目做法是先二分搜調整的次數 解是一個 0 0 0 1 1 1 1 的分佈
+注意上界!!10^9 是不夠的 最差情況會到 2*10^9 開到 10^10 就過了
+進入判斷函式針對每一個 s[i] s[i - 1] 找出一個最佳的調整次數 cnt針對 本次二分搜的 k 值 與 cnt 比較有兩種
+1.奇偶性 2.兩者大小關係同奇偶的狀況可以透過 2 次震盪來消耗掉 2 的倍數次
+一個有趣的觀察 :唯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rating Shuffle">
+<meta property="og:url" content="https://github.com/macaca50507/2016/07/26/Rating Shuffle/index.html">
 <meta property="og:site_name" content="MacacaHelpU">
+<meta property="og:description" content="題目做法是先二分搜調整的次數 解是一個 0 0 0 1 1 1 1 的分佈
+注意上界!!10^9 是不夠的 最差情況會到 2*10^9 開到 10^10 就過了
+進入判斷函式針對每一個 s[i] s[i - 1] 找出一個最佳的調整次數 cnt針對 本次二分搜的 k 值 與 cnt 比較有兩種
+1.奇偶性 2.兩者大小關係同奇偶的狀況可以透過 2 次震盪來消耗掉 2 的倍數次
+一個有趣的觀察 :唯">
+<meta property="og:updated_time" content="2016-07-28T14:16:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MacacaHelpU">
+<meta name="twitter:title" content="Rating Shuffle">
+<meta name="twitter:description" content="題目做法是先二分搜調整的次數 解是一個 0 0 0 1 1 1 1 的分佈
+注意上界!!10^9 是不夠的 最差情況會到 2*10^9 開到 10^10 就過了
+進入判斷函式針對每一個 s[i] s[i - 1] 找出一個最佳的調整次數 cnt針對 本次二分搜的 k 值 與 cnt 比較有兩種
+1.奇偶性 2.兩者大小關係同奇偶的狀況可以透過 2 次震盪來消耗掉 2 的倍數次
+一個有趣的觀察 :唯">
   
     <link rel="alternate" href="/atom.xml" title="MacacaHelpU" type="application/atom+xml">
   
@@ -59,116 +75,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Little Girl and Maximum XOR" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/MacacaHelpU/2016/07/28/Little Girl and Maximum XOR/" class="article-date">
-  <time datetime="2016-07-28T07:06:37.000Z" itemprop="datePublished">2016-07-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/28/Little Girl and Maximum XOR/" data-id="cir7zewdm0000lqrqtpdkbd0n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Maximun Xor" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/MacacaHelpU/2016/07/28/Maximun Xor/" class="article-date">
-  <time datetime="2016-07-27T23:12:28.000Z" itemprop="datePublished">2016-07-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/MacacaHelpU/2016/07/28/Maximun Xor/">Little Girl and Maximum XOR</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a><a href="http://codeforces.com/problemset/problem/276/C" target="_blank" rel="external">題目</a></h2><p><code>注意 :</code><br>如果不是寫成 <code>1ll</code> 那會炸開，因為 <code>integer 只有 32 位</code>左移的時候會爆開<br>所以要轉成 <code>long long</code>  寫成 <code>1ll</code></p>
-<p>重要的觀察是只要找到第一位不一樣的位元 因為數字在位元的狀況下<br>會產生循環的情況 所以我們可以把之後所有的位元都弄成 0 xor 1<br>所以答案是 <code>1ll &lt;&lt; (i + 1) - 1;</code></p>
-<h2 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC CODE:"></a>AC CODE:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ll l,r;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(l == r)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"0"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> i ;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i = <span class="number">63</span>;;i--)&#123;</div><div class="line">        <span class="keyword">if</span>(((l&gt;&gt;i)&amp;<span class="number">1</span>) != ((r&gt;&gt;i)&amp;<span class="number">1</span>))&#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ans = (<span class="number">1l</span>l&lt;&lt;(i+<span class="number">1</span>)) - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/28/Maximun Xor/" data-id="cir7zewee0001lqrqxi1cq0lf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/Bit-compute/">Bit compute</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-failfunction" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/MacacaHelpU/2016/07/27/failfunction/" class="article-date">
-  <time datetime="2016-07-27T08:59:24.000Z" itemprop="datePublished">2016-07-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/MacacaHelpU/2016/07/27/failfunction/">Failfunction</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a><a href="http://codeforces.com/contest/126/problem/B" target="_blank" rel="external">題目</a></h2><p>觀察透過Failfunction建出來的表格來找答案<br>如果 <code>ff[len - 1] 這個值出現兩次以上保證有這個長度的解</code><br>如果只有一次的話可以往前找 <code>ff[ff[len-1]-1]</code>這個位置的值是否不為 0<br>這個動作是: 從前綴的區段找出小一點的解<br>因為<code>Failfunction保證後綴跟前綴相同了</code><br>這個時候如果 <code>ff[ff[len-1]-1]</code>不為 0 就表示有一個更小的長度是有解的<br>其餘為無解的狀況</p>
-<h2 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC CODE"></a>AC CODE</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> ff[<span class="number">1000010</span>];</div><div class="line"><span class="keyword">int</span> len;</div><div class="line"><span class="built_in">string</span> s;</div><div class="line"><span class="keyword">char</span> s2[<span class="number">1000010</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ffunction</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> idx1;</div><div class="line">    <span class="keyword">int</span> idx2 = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(idx1 = <span class="number">1</span> ; idx1 &lt; len ; idx1++)&#123;</div><div class="line">        <span class="keyword">while</span>(idx2 &gt; <span class="number">0</span> &amp;&amp; s[idx2] != s[idx1])&#123;</div><div class="line">            idx2 = ff[idx2 - <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(s[idx2] == s[idx1])</div><div class="line">            idx2++;</div><div class="line"></div><div class="line">        ff[idx1] = idx2;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="built_in">cin</span>&gt;&gt;s;</div><div class="line">    len = s.size();</div><div class="line"></div><div class="line">    ffunction();</div><div class="line"></div><div class="line">    <span class="keyword">int</span> cnt = ff[len - <span class="number">1</span>];</div><div class="line">    <span class="keyword">int</span> apt = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(ff[len - <span class="number">1</span>] == <span class="number">0</span>)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Just a legend"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; len ; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(ff[i] == cnt)&#123;</div><div class="line">            apt++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(apt &gt;= <span class="number">2</span>)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; cnt ; i++)&#123;</div><div class="line">            s2[i] = s[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;s2&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> pos;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(apt == <span class="number">1</span>)&#123;</div><div class="line">        pos = cnt - <span class="number">1</span>;</div><div class="line">        cnt = ff[pos];</div><div class="line">        <span class="keyword">if</span>(ff[pos]==<span class="number">0</span>)&#123;</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"Just a legend"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; cnt ; i++)&#123;</div><div class="line">            s2[i] = s[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;s2&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/27/failfunction/" data-id="cir7zeweh0002lqrq1uo9exnr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/KMP/">KMP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Rating Shuffle" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Rating Shuffle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/MacacaHelpU/2016/07/26/Rating Shuffle/" class="article-date">
   <time datetime="2016-07-26T13:29:24.000Z" itemprop="datePublished">2016-07-26</time>
@@ -181,8 +88,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/MacacaHelpU/2016/07/26/Rating Shuffle/">Rating Shuffle</a>
+    <h1 class="article-title" itemprop="name">
+      Rating Shuffle
     </h1>
   
 
@@ -218,10 +125,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/MacacaHelpU/2016/07/27/failfunction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Failfunction
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
