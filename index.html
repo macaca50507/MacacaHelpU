@@ -61,6 +61,124 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-prime" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2016/07/30/prime/" class="article-date">
+  <time datetime="2016-07-30T11:44:06.000Z" itemprop="datePublished">2016-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/MacacaHelpU/2016/07/30/prime/">Prime</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##<a href="http://codeforces.com/problemset/problem/271/B" target="_blank" rel="external">題目</a></p>
+<p>這一題就是把質數表建出來 直接統計每一個 row column 需要多少次調整<br>再取 min 就是答案囉 <code>注意質數表在迭代的 i 跟 j 要開 long long</code><br>不然 <code>i = 10^6  j = i * i 就炸給你看</code></p>
+<h2 id="AC-Code"><a href="#AC-Code" class="headerlink" title="AC Code"></a>AC Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> s[<span class="number">510</span>][<span class="number">510</span>];</div><div class="line"><span class="keyword">int</span> prime[<span class="number">1000000</span>];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> dif[<span class="number">510</span>][<span class="number">510</span>];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; primes;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j,<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;   </div><div class="line">    <span class="keyword">if</span>(prime[x] == <span class="number">1</span>)</div><div class="line">        dif[i][j] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">int</span> pos = lower_bound(primes.begin(),primes.end(),x) - primes.begin();</div><div class="line">        dif[i][j] = primes[pos]-x;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">1000000</span> ; i++)&#123;</div><div class="line">        prime[i]=<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    prime[<span class="number">0</span>]=prime[<span class="number">1</span>]=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> i = <span class="number">2</span> ; i &lt; <span class="number">1000000</span> ; i++)&#123;</div><div class="line">        <span class="keyword">if</span> (prime[i]) &#123;</div><div class="line">            primes.push_back(i);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> j = i * i; j &lt; <span class="number">1000000</span> ; j+=i)&#123;</div><div class="line">                prime[j] = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> n,m;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123; <span class="comment">//500</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m ; j++)&#123; <span class="comment">//500</span></div><div class="line">            <span class="built_in">cin</span>&gt;&gt;s[i][j];</div><div class="line">            solve(i,j,s[i][j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> ans = <span class="number">1e18</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)&#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m ; j++)&#123;</div><div class="line">            sum+=dif[i][j];</div><div class="line">        &#125;</div><div class="line">        ans=min(sum,ans);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; m ; j++)&#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)&#123;</div><div class="line">            sum+=dif[i][j];    </div><div class="line">        &#125;</div><div class="line">        ans=min(sum,ans);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/30/prime/" data-id="cir94l7oi00081trq5bahjx18" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/prime/">prime</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-game" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2016/07/30/game/" class="article-date">
+  <time datetime="2016-07-30T11:21:38.000Z" itemprop="datePublished">2016-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/MacacaHelpU/2016/07/30/game/">Game</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##<a href="http://codeforces.com/problemset/problem/346/A" target="_blank" rel="external">題目</a></p>
+<p>這一題有一個重要的觀察是最後產出來的結果會是一個<br><code>d, 2d, 3d, ... max{xi}</code> 的陣列<br>那麼我們只需要找出最大公因數就可以知道總共會做幾輪了</p>
+<h2 id="AC-Code"><a href="#AC-Code" class="headerlink" title="AC Code"></a>AC Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> s[<span class="number">110</span>];</div><div class="line"><span class="keyword">int</span> cnt;</div><div class="line"><span class="keyword">int</span> dif;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a , <span class="keyword">int</span> b)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> temp;</div><div class="line">  <span class="keyword">while</span>(b)&#123;</div><div class="line">    temp = a % b;</div><div class="line">    a = b;</div><div class="line">    b = temp;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> n;</div><div class="line">  <span class="built_in">cin</span>&gt;&gt;n;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;s[i];</div><div class="line"></div><div class="line">  <span class="keyword">int</span> temp = s[<span class="number">0</span>];</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt; n ; i++)&#123;</div><div class="line">    temp = gcd(temp , s[i]);</div><div class="line">  &#125;  </div><div class="line"></div><div class="line">  <span class="keyword">int</span> cnt = *max_element(s,s + <span class="number">110</span>);</div><div class="line"></div><div class="line">  cnt = cnt / temp;</div><div class="line">  cnt -= n;</div><div class="line">  <span class="keyword">if</span>(cnt % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Bob"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Alice"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/30/game/" data-id="cir94l7of00061trq1pdhid9k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/game/">game</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="precision-error" class="article article-type-precision" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2016/07/30/error/" class="article-date">
+  <time datetime="2016-07-30T11:15:59.000Z" itemprop="datePublished">2016-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/MacacaHelpU/2016/07/30/error/">error</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/30/error/" data-id="cir94l7o400031trqae90tg0o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Maximun Xor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/MacacaHelpU/2016/07/28/Maximun Xor/" class="article-date">
@@ -90,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/28/Maximun Xor/" data-id="cir7zh0og0000nerqf7tw0gnm" class="article-share-link">Share</a>
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/28/Maximun Xor/" data-id="cir94l7no00001trqmp3tl4ds" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/Bit-compute/">Bit compute</a></li></ul>
@@ -130,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/27/failfunction/" data-id="cir7zh0ow0003nerqsv60vzqv" class="article-share-link">Share</a>
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/27/failfunction/" data-id="cir94l7o700041trqrpivrigj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/KMP/">KMP</a></li></ul>
@@ -184,10 +302,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/26/Rating Shuffle/" data-id="cir7zh0on0001nerqe3dddezb" class="article-share-link">Share</a>
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/26/Rating Shuffle/" data-id="cir94l7nv00011trq66dej6ij" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/Binary-search/">Binary search</a></li></ul>
 
     </footer>
   </div>
@@ -208,7 +326,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Bit-compute/">Bit compute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/KMP/">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Binary-search/">Binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Bit-compute/">Bit compute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/KMP/">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/prime/">prime</a></li></ul>
     </div>
   </div>
 
@@ -218,7 +336,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/MacacaHelpU/tags/Bit-compute/" style="font-size: 10px;">Bit compute</a> <a href="/MacacaHelpU/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/MacacaHelpU/tags/binary-search/" style="font-size: 10px;">binary search</a>
+      <a href="/MacacaHelpU/tags/Binary-search/" style="font-size: 10px;">Binary search</a> <a href="/MacacaHelpU/tags/Bit-compute/" style="font-size: 10px;">Bit compute</a> <a href="/MacacaHelpU/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/MacacaHelpU/tags/game/" style="font-size: 10px;">game</a> <a href="/MacacaHelpU/tags/prime/" style="font-size: 10px;">prime</a>
     </div>
   </div>
 
@@ -240,15 +358,23 @@
       <ul>
         
           <li>
+            <a href="/MacacaHelpU/2016/07/30/prime/">Prime</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/30/game/">Game</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/30/error/">error</a>
+          </li>
+        
+          <li>
             <a href="/MacacaHelpU/2016/07/28/Maximun Xor/">Little Girl and Maximum XOR</a>
           </li>
         
           <li>
             <a href="/MacacaHelpU/2016/07/27/failfunction/">Failfunction</a>
-          </li>
-        
-          <li>
-            <a href="/MacacaHelpU/2016/07/26/Rating Shuffle/">Rating Shuffle</a>
           </li>
         
       </ul>
