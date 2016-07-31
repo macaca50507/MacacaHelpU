@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Buns | MacacaHelpU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="題目這一題是多重背包的裸題，我自己覺得關鍵的地方是一開始的初始化要小心！這一題順便幫我理清了我 dp 的一些概念，原本迴圈的迭代順序有時候都會搞不清楚
+想法是使用前 i 種內餡，已經使用 j 克麵粉，所能產出的最大價值那我們只需要考慮 &amp;quot;第 i 種&amp;quot; 做了幾個麵包 花費了多少麵粉就可以往前溯到 i - 1 項初始化陷阱 : 如果麵粉有多出來，那值應該要是盡可能消耗光麵粉的 dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Buns">
+<meta property="og:url" content="https://github.com/macaca50507/2016/07/31/Buns/index.html">
+<meta property="og:site_name" content="MacacaHelpU">
+<meta property="og:description" content="題目這一題是多重背包的裸題，我自己覺得關鍵的地方是一開始的初始化要小心！這一題順便幫我理清了我 dp 的一些概念，原本迴圈的迭代順序有時候都會搞不清楚
+想法是使用前 i 種內餡，已經使用 j 克麵粉，所能產出的最大價值那我們只需要考慮 &amp;quot;第 i 種&amp;quot; 做了幾個麵包 花費了多少麵粉就可以往前溯到 i - 1 項初始化陷阱 : 如果麵粉有多出來，那值應該要是盡可能消耗光麵粉的 dp">
+<meta property="og:updated_time" content="2016-07-31T03:17:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Buns">
+<meta name="twitter:description" content="題目這一題是多重背包的裸題，我自己覺得關鍵的地方是一開始的初始化要小心！這一題順便幫我理清了我 dp 的一些概念，原本迴圈的迭代順序有時候都會搞不清楚
+想法是使用前 i 種內餡，已經使用 j 克麵粉，所能產出的最大價值那我們只需要考慮 &amp;quot;第 i 種&amp;quot; 做了幾個麵包 花費了多少麵粉就可以往前溯到 i - 1 項初始化陷阱 : 如果麵粉有多出來，那值應該要是盡可能消耗光麵粉的 dp">
+  
+    <link rel="alternate" href="/atom.xml" title="MacacaHelpU" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/MacacaHelpU/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/MacacaHelpU/" id="logo">MacacaHelpU</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/MacacaHelpU/">Home</a>
+        
+          <a class="main-nav-link" href="/MacacaHelpU/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/macaca50507"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Buns" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2016/07/31/Buns/" class="article-date">
+  <time datetime="2016-07-31T02:54:04.000Z" itemprop="datePublished">2016-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Buns
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a><a href="http://codeforces.com/problemset/problem/106/C" target="_blank" rel="external">題目</a></h2><p>這一題是多重背包的裸題，我自己覺得關鍵的地方是一開始的初始化要小心！<br>這一題順便幫我理清了我 dp 的一些概念，原本迴圈的迭代順序有時候都會搞不清楚</p>
+<p>想法是<code>使用前 i 種內餡，已經使用 j 克麵粉，所能產出的最大價值</code><br><code>那我們只需要考慮 &quot;第 i 種&quot; 做了幾個麵包 花費了多少麵粉就可以往前溯到 i - 1 項</code><br><code>初始化陷阱 : 如果麵粉有多出來，那值應該要是盡可能消耗光麵粉的 dp[0][i] 項 不是 0</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for k = 1 ~ (jam[i] / jcost[i])  </div><div class="line">dp[i][j] = max (dp[i - 1][j - k * dcost[i]] + k * value[i],dp[i][j])</div></pre></td></tr></table></figure>
+<h2 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC CODE:"></a>AC CODE:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> jam[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> dcost[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> jcost[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> value[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> dp[<span class="number">15</span>][<span class="number">1010</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,m,c,d;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;c&gt;&gt;d;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i++)&#123; <span class="comment">//1 ~ m</span></div><div class="line">        <span class="built_in">cin</span>&gt;&gt;jam[i]&gt;&gt;jcost[i]&gt;&gt;dcost[i]&gt;&gt;value[i];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> num = n / c;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; c * i &lt;= n ; i++ )&#123;</div><div class="line">        dp[<span class="number">0</span>][c * i] = d * i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= num ;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = c * i + <span class="number">1</span> ; j &lt; c * ( i + <span class="number">1</span> )&amp;&amp;j &lt;= n ; j++)&#123;</div><div class="line">            dp[<span class="number">0</span>][j]=dp[<span class="number">0</span>][c*i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n ;j++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k * jcost[i] &lt;= jam[i] ; k++)&#123;</div><div class="line">                <span class="keyword">if</span>(j - k*dcost[i] &gt;= <span class="number">0</span>)</div><div class="line">                dp[i][j] = max(dp[i<span class="number">-1</span>][j - k * dcost[i]] + value[i] * k,</div><div class="line">                                dp[i][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;dp[m][n]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/31/Buns/" data-id="cira1f78k0000l1rqz7rgw62h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/dp/">dp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/MacacaHelpU/2016/07/30/prime/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Prime</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Trigonometric-Function/">Trigonometric Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/bit-compute/">bit compute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/dp/">dp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/kmp/">kmp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/prime/">prime</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/MacacaHelpU/tags/Trigonometric-Function/" style="font-size: 10px;">Trigonometric Function</a> <a href="/MacacaHelpU/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/MacacaHelpU/tags/bit-compute/" style="font-size: 10px;">bit compute</a> <a href="/MacacaHelpU/tags/dp/" style="font-size: 10px;">dp</a> <a href="/MacacaHelpU/tags/game/" style="font-size: 10px;">game</a> <a href="/MacacaHelpU/tags/kmp/" style="font-size: 10px;">kmp</a> <a href="/MacacaHelpU/tags/prime/" style="font-size: 10px;">prime</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/MacacaHelpU/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/31/Buns/">Buns</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/30/prime/">Prime</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/30/game/">Game</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/30/error/">New Year Table</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/28/Maximun Xor/">Little Girl and Maximum XOR</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Macaca Joe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/MacacaHelpU/" class="mobile-nav-link">Home</a>
+  
+    <a href="/MacacaHelpU/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/MacacaHelpU/fancybox/jquery.fancybox.css">
+  <script src="/MacacaHelpU/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/MacacaHelpU/js/script.js"></script>
+
+  </div>
+</body>
+</html>
