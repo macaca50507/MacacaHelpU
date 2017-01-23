@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>uva11503 | MacacaHelpU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##題目[https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;amp;Itemid=99999999&amp;amp;page=show_problem&amp;amp;category=&amp;amp;problem=2498&amp;amp;mosmsg=Submission+received+with+ID+18666872]
+##想法
+在unite的時候計算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uva11503">
+<meta property="og:url" content="https://github.com/macaca50507/2017/01/23/uva11503/index.html">
+<meta property="og:site_name" content="MacacaHelpU">
+<meta property="og:description" content="##題目[https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;amp;Itemid=99999999&amp;amp;page=show_problem&amp;amp;category=&amp;amp;problem=2498&amp;amp;mosmsg=Submission+received+with+ID+18666872]
+##想法
+在unite的時候計算">
+<meta property="og:updated_time" content="2017-01-23T10:06:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="uva11503">
+<meta name="twitter:description" content="##題目[https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;amp;Itemid=99999999&amp;amp;page=show_problem&amp;amp;category=&amp;amp;problem=2498&amp;amp;mosmsg=Submission+received+with+ID+18666872]
+##想法
+在unite的時候計算">
+  
+    <link rel="alternate" href="/atom.xml" title="MacacaHelpU" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/MacacaHelpU/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/MacacaHelpU/" id="logo">MacacaHelpU</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/MacacaHelpU/">Home</a>
+        
+          <a class="main-nav-link" href="/MacacaHelpU/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/macaca50507"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-uva11503" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2017/01/23/uva11503/" class="article-date">
+  <time datetime="2017-01-23T10:03:41.000Z" itemprop="datePublished">2017-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/MacacaHelpU/categories/UVA/">UVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      uva11503
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##題目[<a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;Itemid=99999999&amp;page=show_problem&amp;category=&amp;problem=2498&amp;mosmsg=Submission+received+with+ID+18666872" target="_blank" rel="external">https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;Itemid=99999999&amp;page=show_problem&amp;category=&amp;problem=2498&amp;mosmsg=Submission+received+with+ID+18666872</a>]</p>
+<p>##想法</p>
+<p>在unite的時候計算set的大小並且輸出</p>
+<p>##AC CODE:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> par[<span class="number">200010</span>];</div><div class="line"><span class="keyword">int</span> TC;</div><div class="line"><span class="keyword">int</span> N;</div><div class="line"><span class="built_in">string</span> c1;</div><div class="line"><span class="built_in">string</span> c2;</div><div class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span> , <span class="keyword">int</span>&gt; m;</div><div class="line"><span class="keyword">int</span> cnt[<span class="number">200010</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)&#123;</div><div class="line">        par[i] = i;</div><div class="line">        cnt[i] = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(par[x] == x)</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> par[x] = find(par[x]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">same</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> find(x) == find(y);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> px = find(x);</div><div class="line">    <span class="keyword">int</span> py = find(y);</div><div class="line">    <span class="keyword">if</span>(px != py)&#123;</div><div class="line">        par[px] = py;</div><div class="line">        cnt[py] += cnt[px];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;cnt[py]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;TC;</div><div class="line">    <span class="keyword">while</span>(TC--)&#123;</div><div class="line">        <span class="built_in">memset</span>(cnt , <span class="number">0</span> , <span class="keyword">sizeof</span>(cnt));</div><div class="line">        m.clear();</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;N;</div><div class="line">        init(N);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">1</span> ; i &lt; N ; i++)&#123;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;c1&gt;&gt;c2;</div><div class="line">            <span class="keyword">if</span>(m[c1] == <span class="number">0</span>)</div><div class="line">                m[c1] = j++;</div><div class="line">            <span class="keyword">if</span>(m[c2] == <span class="number">0</span>)</div><div class="line">                m[c2] = j++;</div><div class="line">            unite(m[c1] , m[c2]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2017/01/23/uva11503/" data-id="ciy9xibg0000n3r51pjqefvhz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/DSU/">DSU</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/MacacaHelpU/2017/01/22/uva793/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">UVA793</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/MacacaHelpU/categories/NCTU-PCCA-2016/">NCTU PCCA 2016</a></li><li class="category-list-item"><a class="category-list-link" href="/MacacaHelpU/categories/POJ/">POJ</a></li><li class="category-list-item"><a class="category-list-link" href="/MacacaHelpU/categories/UVA/">UVA</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/DSU/">DSU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/RMQ/">RMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Trigonometric-Function/">Trigonometric Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/bit-compute/">bit compute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/dp/">dp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/kmp/">kmp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/prime/">prime</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/MacacaHelpU/tags/DSU/" style="font-size: 20px;">DSU</a> <a href="/MacacaHelpU/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/MacacaHelpU/tags/Trigonometric-Function/" style="font-size: 10px;">Trigonometric Function</a> <a href="/MacacaHelpU/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/MacacaHelpU/tags/bit-compute/" style="font-size: 10px;">bit compute</a> <a href="/MacacaHelpU/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/MacacaHelpU/tags/dp/" style="font-size: 20px;">dp</a> <a href="/MacacaHelpU/tags/game/" style="font-size: 10px;">game</a> <a href="/MacacaHelpU/tags/kmp/" style="font-size: 10px;">kmp</a> <a href="/MacacaHelpU/tags/prime/" style="font-size: 10px;">prime</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/MacacaHelpU/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/MacacaHelpU/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/MacacaHelpU/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/MacacaHelpU/2017/01/23/uva11503/">uva11503</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2017/01/22/uva793/">UVA793</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/08/01/Casar/">Caesar&#39;s Legions</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/31/dfs/">DFS</a>
+          </li>
+        
+          <li>
+            <a href="/MacacaHelpU/2016/07/31/sparsetable/">POJ 3264</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Macaca Joe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/MacacaHelpU/" class="mobile-nav-link">Home</a>
+  
+    <a href="/MacacaHelpU/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/MacacaHelpU/fancybox/jquery.fancybox.css">
+  <script src="/MacacaHelpU/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/MacacaHelpU/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/macaca50507"></form>
@@ -60,6 +60,50 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-failfunction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/MacacaHelpU/2016/07/27/failfunction/" class="article-date">
+  <time datetime="2016-07-27T08:59:24.000Z" itemprop="datePublished">2016-07-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/MacacaHelpU/categories/NCTU-PCCA-2016/">NCTU PCCA 2016</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/MacacaHelpU/2016/07/27/failfunction/">Failfunction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a><a href="http://codeforces.com/contest/126/problem/B" target="_blank" rel="external">題目</a></h2><p>觀察透過Failfunction建出來的表格來找答案<br>如果 <code>ff[len - 1] 這個值出現兩次以上保證有這個長度的解</code><br>如果只有一次的話可以往前找 <code>ff[ff[len-1]-1]</code>這個位置的值是否不為 0<br>這個動作是: 從前綴的區段找出小一點的解<br>因為<code>Failfunction保證後綴跟前綴相同了</code><br>這個時候如果 <code>ff[ff[len-1]-1]</code>不為 0 就表示有一個更小的長度是有解的<br>其餘為無解的狀況</p>
+<h2 id="AC-CODE"><a href="#AC-CODE" class="headerlink" title="AC CODE:"></a>AC CODE:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> ff[<span class="number">1000010</span>];</div><div class="line"><span class="keyword">int</span> len;</div><div class="line"><span class="built_in">string</span> s;</div><div class="line"><span class="keyword">char</span> s2[<span class="number">1000010</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ffunction</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> idx1;</div><div class="line">    <span class="keyword">int</span> idx2 = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(idx1 = <span class="number">1</span> ; idx1 &lt; len ; idx1++)&#123;</div><div class="line">        <span class="keyword">while</span>(idx2 &gt; <span class="number">0</span> &amp;&amp; s[idx2] != s[idx1])&#123;</div><div class="line">            idx2 = ff[idx2 - <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(s[idx2] == s[idx1])</div><div class="line">            idx2++;</div><div class="line"></div><div class="line">        ff[idx1] = idx2;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="built_in">cin</span>&gt;&gt;s;</div><div class="line">    len = s.size();</div><div class="line"></div><div class="line">    ffunction();</div><div class="line"></div><div class="line">    <span class="keyword">int</span> cnt = ff[len - <span class="number">1</span>];</div><div class="line">    <span class="keyword">int</span> apt = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(ff[len - <span class="number">1</span>] == <span class="number">0</span>)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Just a legend"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; len ; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(ff[i] == cnt)&#123;</div><div class="line">            apt++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(apt &gt;= <span class="number">2</span>)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; cnt ; i++)&#123;</div><div class="line">            s2[i] = s[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;s2&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> pos;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(apt == <span class="number">1</span>)&#123;</div><div class="line">        pos = cnt - <span class="number">1</span>;</div><div class="line">        cnt = ff[pos];</div><div class="line">        <span class="keyword">if</span>(ff[pos]==<span class="number">0</span>)&#123;</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"Just a legend"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; cnt ; i++)&#123;</div><div class="line">            s2[i] = s[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;s2&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/27/failfunction/" data-id="ciy9xibeq00053r51l48ae4lg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/kmp/">kmp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Rating Shuffle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -107,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/26/Rating Shuffle/" data-id="ciy853u00000aaj51x69shghu" class="article-share-link">Partager</a>
+      <a data-url="https://github.com/macaca50507/MacacaHelpU/2016/07/26/Rating Shuffle/" data-id="ciy9xibe700013r51lg6vbs38" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li></ul>
@@ -130,7 +174,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/MacacaHelpU/categories/NCTU-PCCA-2016/">NCTU PCCA 2016</a></li><li class="category-list-item"><a class="category-list-link" href="/MacacaHelpU/categories/POJ/">POJ</a></li><li class="category-list-item"><a class="category-list-link" href="/MacacaHelpU/categories/UVA/">UVA</a></li></ul>
     </div>
@@ -140,7 +184,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/DSU/">DSU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/RMQ/">RMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/Trigonometric-Function/">Trigonometric Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/bit-compute/">bit compute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/dp/">dp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/kmp/">kmp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/MacacaHelpU/tags/prime/">prime</a></li></ul>
     </div>
@@ -150,9 +194,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/MacacaHelpU/tags/DSU/" style="font-size: 10px;">DSU</a> <a href="/MacacaHelpU/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/MacacaHelpU/tags/Trigonometric-Function/" style="font-size: 10px;">Trigonometric Function</a> <a href="/MacacaHelpU/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/MacacaHelpU/tags/bit-compute/" style="font-size: 10px;">bit compute</a> <a href="/MacacaHelpU/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/MacacaHelpU/tags/dp/" style="font-size: 20px;">dp</a> <a href="/MacacaHelpU/tags/game/" style="font-size: 10px;">game</a> <a href="/MacacaHelpU/tags/kmp/" style="font-size: 10px;">kmp</a> <a href="/MacacaHelpU/tags/prime/" style="font-size: 10px;">prime</a>
+      <a href="/MacacaHelpU/tags/DSU/" style="font-size: 20px;">DSU</a> <a href="/MacacaHelpU/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/MacacaHelpU/tags/Trigonometric-Function/" style="font-size: 10px;">Trigonometric Function</a> <a href="/MacacaHelpU/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/MacacaHelpU/tags/bit-compute/" style="font-size: 10px;">bit compute</a> <a href="/MacacaHelpU/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/MacacaHelpU/tags/dp/" style="font-size: 20px;">dp</a> <a href="/MacacaHelpU/tags/game/" style="font-size: 10px;">game</a> <a href="/MacacaHelpU/tags/kmp/" style="font-size: 10px;">kmp</a> <a href="/MacacaHelpU/tags/prime/" style="font-size: 10px;">prime</a>
     </div>
   </div>
 
@@ -169,9 +213,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/MacacaHelpU/2017/01/23/uva11503/">uva11503</a>
+          </li>
         
           <li>
             <a href="/MacacaHelpU/2017/01/22/uva793/">UVA793</a>
@@ -189,10 +237,6 @@
             <a href="/MacacaHelpU/2016/07/31/sparsetable/">POJ 3264</a>
           </li>
         
-          <li>
-            <a href="/MacacaHelpU/2016/07/31/Buns/">Buns</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -206,7 +250,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Macaca Joe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
